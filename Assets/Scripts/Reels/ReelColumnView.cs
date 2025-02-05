@@ -9,8 +9,12 @@ public class ReelColumnView : View<ReelColumnViewController, ReelColumnView>
 
     List<SymbolCardView> _symbolCards = new();
 
+    //Getters
     public IList<SymbolCardView> SymbolCards => _symbolCards;
+
+    //Events
     public event Func<SymbolAssetConfig> OnGetCenterSymbolConfig;
+    public event Action OnSpinButtonClicked;
 
     protected override void Start() {
         base.Start();
@@ -22,7 +26,15 @@ public class ReelColumnView : View<ReelColumnViewController, ReelColumnView>
         _symbolCards.Add(symbolCard);
     }
 
+    public void UpdateSymbolCard(int index, SymbolAssetConfig symbolAssetConfig) {
+        _symbolCards[index].Setup(symbolAssetConfig);
+    }
+
     public SymbolAssetConfig GetCenterSymbolConfig() {
         return OnGetCenterSymbolConfig?.Invoke();
+    }
+
+    public void SpinButtonClicked() {
+        OnSpinButtonClicked?.Invoke();
     }
 }

@@ -10,11 +10,13 @@ public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
 
     [Header("UI")]
     [SerializeField] Button _spinButton;
+    [SerializeField] Button _prizeButton;
     
     List<ReelColumnView> _reelColumnViews = new();
 
     public IEnumerable<ReelColumnView> ReelColumnViews => _reelColumnViews;
     public Button SpinButton => _spinButton;
+    public Button PrizeButton => _prizeButton;
 
     protected override void Start()
     {

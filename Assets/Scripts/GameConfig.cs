@@ -4,11 +4,17 @@ using UnityEngine;
 public class GameConfig : ScriptableObject {  
     
     [Header("Reel Settings")]
-    public int ReelCount = 3;
-    public int SymbolsPerReel = 3;
-    public float ReelSpinDuration = 1.0f;
+    [SerializeField] int _reelsCount = 3;
+    [SerializeField] int _symbolsPerReel = 3;
+    [SerializeField] float _reelSpinDuration = 1.0f;
 
     [Header("Game Settings")]
-    public float JackpotChance = 0.005f; // 1/200
-    public int InitialCredits = 100;
+    [SerializeField] float _jackpotChance = 0.005f; // 1/200
+    [SerializeField] int _initialCredits = 100;
+
+    public int ReelsCount => _reelsCount;
+    public int SymbolsPerReel => _symbolsPerReel;
+    public float ReelSpinDuration => _reelSpinDuration;
+    public float JackpotChance => _jackpotChance;
+    public int InitialCredits => _initialCredits;
 }  

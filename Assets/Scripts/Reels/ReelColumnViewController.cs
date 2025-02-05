@@ -22,6 +22,11 @@ public class ReelColumnViewController : ViewController<ReelColumnView> {
         return EnvironmentConfigs.Instance.SymbolsAssetCollection.GetConfig(Random.Range(1, symbolsSize));
     }
 
+    public SymbolAssetConfig GetCenterSymbolConfig()
+    {
+        return View.symbolCards[View.symbolCards.Count / 2].GetConfig();
+    }
+
     protected override void SetupEventHandlers(){}
     protected override void RemoveEventHandlers(){}
     

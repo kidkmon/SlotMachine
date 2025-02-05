@@ -15,3 +15,4 @@ MonoBehaviour:
   _id: 10
   _payout: 10
   _icon: {fileID: 21300000, guid: 121521114f69d0c46bd7bba8a43326de, type: 3}
+  _isWild: 1

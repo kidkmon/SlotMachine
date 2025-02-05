@@ -14,7 +14,7 @@ public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
     
     List<ReelColumnView> _reelColumnViews = new();
 
-    public IEnumerable<ReelColumnView> ReelColumnViews => _reelColumnViews;
+    public IList<ReelColumnView> ReelColumnViews => _reelColumnViews;
     public Button SpinButton => _spinButton;
     public Button PrizeButton => _prizeButton;
 

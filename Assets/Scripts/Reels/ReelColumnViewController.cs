@@ -7,7 +7,16 @@ public class ReelColumnViewController : ViewController<ReelColumnView> {
         UpdateView();
     }
 
-    private void UpdateView()
+    protected override void SetupEventHandlers()
+    {
+        View.OnGetCenterSymbolConfig += GetCenterSymbolConfig;
+    }
+    protected override void RemoveEventHandlers()
+    {
+        View.OnGetCenterSymbolConfig -= GetCenterSymbolConfig;
+    }
+
+    void UpdateView()
     {
         int symbolsPerReel = EnvironmentConfigs.Instance.GameConfig.SymbolsPerReel;
         for (int i = 0; i < symbolsPerReel; i++)
@@ -24,10 +33,6 @@ public class ReelColumnViewController : ViewController<ReelColumnView> {
 
     public SymbolAssetConfig GetCenterSymbolConfig()
     {
-        return View.symbolCards[View.symbolCards.Count / 2].GetConfig();
+        return View.SymbolCards[View.SymbolCards.Count / 2].GetConfig();
     }
-
-    protected override void SetupEventHandlers(){}
-    protected override void RemoveEventHandlers(){}
-    
 }

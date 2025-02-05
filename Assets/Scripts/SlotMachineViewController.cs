@@ -1,3 +1,4 @@
+using UnityEngine;
 
 public class SlotMachineViewController : ViewController<SlotMachineView>
 {
@@ -22,7 +23,7 @@ public class SlotMachineViewController : ViewController<SlotMachineView>
     {
         foreach (var reelColumnView in View.ReelColumnViews)
         {
-            //TODO: Implement spinning logic
+            Debug.Log("Center symbol: " + reelColumnView.GetCenterSymbolConfig().Id);
         }
     }
 }

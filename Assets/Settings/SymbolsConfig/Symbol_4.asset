@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea589e8981d36d418f5d1be7b934e90, type: 3}
-  m_Name: Symbol_Wild
+  m_Name: Symbol_4
   m_EditorClassIdentifier: 
-  Id: 10
-  Payout: 10
-  Icon: {fileID: 21300000, guid: 121521114f69d0c46bd7bba8a43326de, type: 3}
+  _id: 4
+  _payout: 4
+  _icon: {fileID: 21300000, guid: e096b335c9b413c4391ff0d7f8710b3a, type: 3}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea589e8981d36d418f5d1be7b934e90, type: 3}
   m_Name: Symbol_8
   m_EditorClassIdentifier: 
-  Id: 8
-  Payout: 8
-  Icon: {fileID: 21300000, guid: c4444969d8446a4428b726f41200160e, type: 3}
+  _id: 8
+  _payout: 8
+  _icon: {fileID: 21300000, guid: c4444969d8446a4428b726f41200160e, type: 3}

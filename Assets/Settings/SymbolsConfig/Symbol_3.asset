@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea589e8981d36d418f5d1be7b934e90, type: 3}
-  m_Name: Symbol_5
+  m_Name: Symbol_3
   m_EditorClassIdentifier: 
-  Id: 5
-  Payout: 5
-  Icon: {fileID: 21300000, guid: 4aa44d2abc93a384bba943b4e601e473, type: 3}
+  _id: 3
+  _payout: 3
+  _icon: {fileID: 21300000, guid: 5725b79dd5c75f04aa31d3e66eb2dbae, type: 3}

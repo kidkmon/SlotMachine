@@ -6,7 +6,7 @@ public class ReelColumnView : View<ReelColumnViewController, ReelColumnView>
     [SerializeField] GameObject _container;
     [SerializeField] GameObject _symbolCardPrefab;
 
-    public List<SymbolCardView> _symbolCards;
+    List<SymbolCardView> _symbolCards;
 
     protected override void Start() {
         base.Start();

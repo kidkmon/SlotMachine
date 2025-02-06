@@ -13,6 +13,12 @@ public class CreditSystem : Singleton<CreditSystem> {
         SetCredits(EnvironmentConfigs.Instance.GameConfig.InitialCredits);
     }
 
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            AddCredits(100);
+        }
+    }
+
     public bool TryDeductBet() {
         if (_credits <= 0) return false;
         SetCredits(_credits - _betValue);
@@ -28,6 +34,7 @@ public class CreditSystem : Singleton<CreditSystem> {
 
     public void Cashout()
     {
+        Debug.Log("Cashout");
         SetCredits(EnvironmentConfigs.Instance.GameConfig.InitialCredits);
         //LogSystem.Instance.LogCashout(_credits);
     } 

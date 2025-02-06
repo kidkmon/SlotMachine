@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class CreditSystem : Singleton<CreditSystem> {
+    [HideInInspector] public UnityEvent<int> OnCreditUpdated;
+
     int _credits;
     int _betValue;
-
-    [HideInInspector] public UnityEvent<int> OnCreditUpdated;
 
     public void Initialize()
     {

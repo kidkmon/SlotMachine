@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class JackpotSystem : Singleton<JackpotSystem> {
+    [HideInInspector] public UnityEvent<float> OnJackpotUpdated;
+
     float _jackpotValue;
     float _incrementValue;
-
-    [HideInInspector] public UnityEvent<float> OnJackpotUpdated;
 
     void Start()
     {

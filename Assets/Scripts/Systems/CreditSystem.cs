@@ -23,6 +23,7 @@ public class CreditSystem : Singleton<CreditSystem> {
         OnCreditUpdated?.Invoke(_credits);
     }
 
+    public int Credits => _credits;
     public void AddCredits(int value) => SetCredits(_credits + value);
 
     public void Cashout()

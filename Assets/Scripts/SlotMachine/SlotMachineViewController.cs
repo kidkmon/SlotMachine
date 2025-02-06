@@ -12,13 +12,11 @@ public class SlotMachineViewController : ViewController<SlotMachineView>
 
     protected override void SetupEventHandlers()
     {
-        // View.SpinButton.onClick.AddListener(OnSpinButtonClicked);
-        // View.PrizeButton.onClick.AddListener(OnPrizeButtonClicked);
+        View.OnSpinButtonClicked += OnSpinButtonClicked;
     }
     protected override void RemoveEventHandlers()
     {
-        // View.SpinButton.onClick.RemoveListener(OnSpinButtonClicked);
-        // View.PrizeButton.onClick.RemoveListener(OnPrizeButtonClicked);
+        View.OnSpinButtonClicked -= OnSpinButtonClicked;
     }
 
     void OnSpinButtonClicked()
@@ -30,12 +28,16 @@ public class SlotMachineViewController : ViewController<SlotMachineView>
         }
 
         //Check if center symbols are the same
-        Debug.Log(CheckCenterSymbols());
+        var (isCenterSymbolsMatch, symbolConfig) = CheckCenterSymbols();
+        if(isCenterSymbolsMatch)
+        {
+            GivePrizeReward(symbolConfig);
+        }
     }
 
-    bool CheckCenterSymbols()
+    (bool, SymbolAssetConfig) CheckCenterSymbols()
     {
-        if (View.ReelColumnViews.Count == 0) return false;
+        if (View.ReelColumnViews.Count == 0) return (false, null);
 
         var centerSymbol = View.ReelColumnViews[0].GetCenterSymbolConfig();
         for (int i = 1; i < View.ReelColumnViews.Count; i++)
@@ -48,18 +50,16 @@ public class SlotMachineViewController : ViewController<SlotMachineView>
             
             if (symbolConfig.Id != centerSymbol.Id && !symbolConfig.IsWild)
             {
-                return false;
+                return (false, null);
             }
         }
 
-        return true;
+        return (true, centerSymbol);
     }
 
-    void OnPrizeButtonClicked()
+    void GivePrizeReward(SymbolAssetConfig symbolConfig)
     {
-        foreach (var reelColumnView in View.ReelColumnViews)
-        {
-            Debug.Log("Center symbol: " + reelColumnView.GetCenterSymbolConfig().Id);
-        }
+        CreditSystem.Instance.AddCredits(symbolConfig.Payout);
+        Debug.Log($"Prize reward: {symbolConfig.Payout}");
     }
 }

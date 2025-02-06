@@ -1,7 +1,7 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
 {
@@ -14,7 +14,8 @@ public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
     
     List<ReelColumnView> _reelColumnViews = new();
 
-    public IList<ReelColumnView> ReelColumnViews => _reelColumnViews;
+    public IReadOnlyList<ReelColumnView> ReelColumnViews => _reelColumnViews;
+    public event Action OnSpinButtonClicked;
 
     protected override void Start()
     {
@@ -27,9 +28,12 @@ public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
         _reelColumnViews.Add(reelColumnView);
     }
 
+    public void SpinMachine() => OnSpinButtonClicked?.Invoke();
+
     #region UI
 
-    void OnEnable() {  
+    void OnEnable() {
+        UpdateJackpotUI(JackpotSystem.Instance.GetCurrentJackpot());
         JackpotSystem.Instance.OnJackpotUpdated.AddListener(UpdateJackpotUI);
     }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,7 +16,7 @@ public class SlotMachineManager : Singleton<SlotMachineManager>
     void Start()
     {
         _slotMachinesMaxInstances = EnvironmentConfigs.Instance.GameConfig.SlotMachinesMaxInstances;
-        
+
         PlayerPrefs.SetInt("SlotMachineInstances", 1);
         ActivateSlotMachines();
     }
@@ -68,6 +69,11 @@ public class SlotMachineManager : Singleton<SlotMachineManager>
             DisableSlotMachine();
             PlayerPrefs.SetInt("SlotMachineInstances", instances);
         }
+    }
+
+    public IEnumerable<SlotMachineView> GetActiveSlotMachines()
+    {
+        return _slotMachines.Where(slotMachine => slotMachine.activeSelf).Select(slotMachine => slotMachine.GetComponent<SlotMachineView>());
     }
 
     #endregion

@@ -10,7 +10,7 @@ public class ReelColumnView : View<ReelColumnViewController, ReelColumnView>
     List<SymbolCardView> _symbolCards = new();
 
     //Getters
-    public IList<SymbolCardView> SymbolCards => _symbolCards;
+    public IReadOnlyList<SymbolCardView> SymbolCards => _symbolCards;
 
     //Events
     public event Func<SymbolAssetConfig> OnGetCenterSymbolConfig;
@@ -34,7 +34,5 @@ public class ReelColumnView : View<ReelColumnViewController, ReelColumnView>
         return OnGetCenterSymbolConfig?.Invoke();
     }
 
-    public void SpinButtonClicked() {
-        OnSpinButtonClicked?.Invoke();
-    }
+    public void SpinButtonClicked() => OnSpinButtonClicked?.Invoke();
 }

@@ -8,6 +8,9 @@ public class GameConfig : ScriptableObject {
     [SerializeField] int _symbolsPerReel = 3;
     [SerializeField] float _reelSpinDuration = 1.0f;
 
+    [Header("Slot Machine Settings")]
+    [SerializeField] int _slotMachinesMaxInstances = 3;
+
     [Header("Game Settings")]
     [SerializeField] int _betValue = 1;
     [SerializeField] int _initialCredits = 100;
@@ -23,6 +26,8 @@ public class GameConfig : ScriptableObject {
     public int SymbolsPerReel => _symbolsPerReel;
     public float ReelSpinDuration => _reelSpinDuration;
 
+    public int SlotMachinesMaxInstances => _slotMachinesMaxInstances;
+    
     public int BetValue => _betValue;
     public int InitialCredits => _initialCredits;
 

@@ -12,13 +12,13 @@ public class SlotMachineViewController : ViewController<SlotMachineView>
 
     protected override void SetupEventHandlers()
     {
-        View.SpinButton.onClick.AddListener(OnSpinButtonClicked);
-        View.PrizeButton.onClick.AddListener(OnPrizeButtonClicked);
+        // View.SpinButton.onClick.AddListener(OnSpinButtonClicked);
+        // View.PrizeButton.onClick.AddListener(OnPrizeButtonClicked);
     }
     protected override void RemoveEventHandlers()
     {
-        View.SpinButton.onClick.RemoveListener(OnSpinButtonClicked);
-        View.PrizeButton.onClick.RemoveListener(OnPrizeButtonClicked);
+        // View.SpinButton.onClick.RemoveListener(OnSpinButtonClicked);
+        // View.PrizeButton.onClick.RemoveListener(OnPrizeButtonClicked);
     }
 
     void OnSpinButtonClicked()

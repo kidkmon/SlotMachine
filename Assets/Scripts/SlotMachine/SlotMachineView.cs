@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,14 +10,11 @@ public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
     [SerializeField] Transform _reelContainer;
 
     [Header("UI")]
-    [SerializeField] Button _spinButton;
-    [SerializeField] Button _prizeButton;
+    [SerializeField] TextMeshProUGUI _jackpotText;
     
     List<ReelColumnView> _reelColumnViews = new();
 
     public IList<ReelColumnView> ReelColumnViews => _reelColumnViews;
-    public Button SpinButton => _spinButton;
-    public Button PrizeButton => _prizeButton;
 
     protected override void Start()
     {
@@ -28,4 +26,18 @@ public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
         var reelColumnView = Instantiate(_reelColumnViewPrefab, _reelContainer);
         _reelColumnViews.Add(reelColumnView);
     }
+
+    #region UI
+
+    void OnEnable() {  
+        JackpotSystem.Instance.OnJackpotUpdated.AddListener(UpdateJackpotUI);
+    }
+
+    void OnDisable() {
+        JackpotSystem.Instance.OnJackpotUpdated.RemoveListener(UpdateJackpotUI);
+    }
+
+    void UpdateJackpotUI(float jackpot) => _jackpotText.text = jackpot.ToString("F2");
+
+    #endregion
 }

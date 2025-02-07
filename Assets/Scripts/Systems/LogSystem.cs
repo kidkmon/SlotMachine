@@ -1,8 +1,11 @@
 using System;
 using System.IO;
+using TMPro;
 using UnityEngine;
 
 public class LogSystem : Singleton<LogSystem> {
+
+    [SerializeField] TextMeshProUGUI _pathText;
 
     string _logFilePath;
 
@@ -14,6 +17,8 @@ public class LogSystem : Singleton<LogSystem> {
     void InitializeLogFile() {
         if (File.Exists(_logFilePath)) File.Delete(_logFilePath);
         File.WriteAllText(_logFilePath, $"Log started at: {DateTime.Now}\n\n");
+
+        _pathText.text = _logFilePath;
         Debug.Log($"Local Log file saved in: {Application.persistentDataPath}");
     }
 

@@ -34,9 +34,7 @@ public class ReelColumnViewController : ViewController<ReelColumnView> {
 
     public SymbolAssetConfig GetCenterSymbolConfig()
     {
-        var centerSymbol = View.SymbolCards[View.SymbolCards.Count / 2].GetConfig();
-        Debug.Log(centerSymbol.Id);
-        return View.SymbolCards[View.SymbolCards.Count / 2].GetConfig();
+        return View.SymbolCards[View.ReelSpin.MiddleIndex].GetConfig();
     }
 
     public void SpinButtonClicked()

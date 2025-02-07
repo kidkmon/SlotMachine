@@ -8,12 +8,13 @@ public class LogSystem : Singleton<LogSystem> {
 
     void Awake() {
         _logFilePath = Path.Combine(Application.persistentDataPath, "SlotMachine_logs.txt");
-        InitializeLogFile();  
+        InitializeLogFile();
     }  
 
     void InitializeLogFile() {
         if (File.Exists(_logFilePath)) File.Delete(_logFilePath);
         File.WriteAllText(_logFilePath, $"Log started at: {DateTime.Now}\n\n");
+        Debug.Log($"Local Log file saved in: {Application.persistentDataPath}");
     }
 
     // Basic logging method
@@ -36,12 +37,12 @@ public class LogSystem : Singleton<LogSystem> {
 
     public void LogSpinStart(int amount)
     {
-        Log($"Play started (bet: {amount} credit)");
+        Log($"Spin started (bet: {amount} credit)");
     }
 
     public void LogSpinResult(int payout)
     {
-        Log($"Play completed | Gain: {payout} credits");
+        Log($"Center match! | Gain: {payout} credits");
     }
 
     public void LogJackpotWin(int value)

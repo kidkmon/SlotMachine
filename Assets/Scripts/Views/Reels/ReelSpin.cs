@@ -7,8 +7,10 @@ public class ReelSpin : MonoBehaviour
     [SerializeField] RectTransform _reelTransform;
 
     float _timeInterval = 0.025f;
+    int _middleIndex = 1;
     bool _reelStopped;
 
+    public int MiddleIndex => _middleIndex;
     public bool ReelStopped => _reelStopped;
     
     void Start()
@@ -18,7 +20,7 @@ public class ReelSpin : MonoBehaviour
 
     public void SpinReel()
     {
-        StartCoroutine(Rotate());
+        StartCoroutine(Spin());
     }
 
     void OnDestroy()
@@ -27,35 +29,24 @@ public class ReelSpin : MonoBehaviour
     }
     
     #region Reel Animation
-    IEnumerator Rotate()
+    
+    IEnumerator Spin()
     {
         _reelStopped = false;
 
-        for (int i = 0; i < 30; i++)
-        {
-            if (_reelTransform.offsetMax.y >= 700f)
-            {
-                _reelTransform.offsetMax = new Vector2(_reelTransform.offsetMax.x, 0f);
-            }
-            else
-            {
-                _reelTransform.offsetMax = new Vector2(_reelTransform.offsetMax.x, _reelTransform.offsetMax.y + 100f);
-            }
-            
-            yield return new WaitForSeconds(_timeInterval);
-        }
-
-        int randomValue = Random.Range(30, 50);
+        int randomValue = Random.Range(30, 60);
 
         for (int i = 0; i < randomValue; i++)
         {
             if (_reelTransform.offsetMax.y >= 700f)
             {
                 _reelTransform.offsetMax = new Vector2(_reelTransform.offsetMax.x, 0f);
+                _middleIndex = 1;
             }
             else
             {
                 _reelTransform.offsetMax = new Vector2(_reelTransform.offsetMax.x, _reelTransform.offsetMax.y + 100f);
+                _middleIndex += 1;
             }
          
             AdjustTimeInterval(i, randomValue);

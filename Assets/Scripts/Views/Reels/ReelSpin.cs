@@ -34,18 +34,18 @@ public class ReelSpin : MonoBehaviour
     {
         _reelStopped = false;
 
-        int randomValue = Random.Range(30, 60);
+        int randomValue = Random.Range(15, 30);
 
         for (int i = 0; i < randomValue; i++)
         {
-            if (_reelTransform.offsetMax.y >= 700f)
+            if (_reelTransform.offsetMax.y >= 231f) // Reset to the top
             {
                 _reelTransform.offsetMax = new Vector2(_reelTransform.offsetMax.x, 0f);
                 _middleIndex = 1;
             }
             else
             {
-                _reelTransform.offsetMax = new Vector2(_reelTransform.offsetMax.x, _reelTransform.offsetMax.y + 100f);
+                _reelTransform.offsetMax = new Vector2(_reelTransform.offsetMax.x, _reelTransform.offsetMax.y + 33f);
                 _middleIndex += 1;
             }
          

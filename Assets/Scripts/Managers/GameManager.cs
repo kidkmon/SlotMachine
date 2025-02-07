@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager> {
     public void StartSpin() {
         foreach (var slotMachine in SlotMachineManager.Instance.GetActiveSlotMachines()) {
             if (CreditSystem.Instance.TryDeductBet()) {
-                Logger.Instance.LogSpinStart(EnvironmentConfigs.Instance.GameConfig.BetValue);
+                LogSystem.Instance.LogSpinStart(EnvironmentConfigs.Instance.GameConfig.BetValue);
 
                 JackpotSystem.Instance.AddToJackpot();
 
@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager> {
                     int jackpotValue = (int)JackpotSystem.Instance.GetCurrentJackpot();
                     CreditSystem.Instance.AddCredits(jackpotValue);
                     JackpotSystem.Instance.ResetJackpot();
-                    Logger.Instance.LogJackpotWin(jackpotValue);
+                    LogSystem.Instance.LogJackpotWin(jackpotValue);
                 }
 
                 slotMachine.SpinMachine();

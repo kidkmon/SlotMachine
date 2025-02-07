@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using UnityEngine;
 
-public class Logger : Singleton<Logger> {
+public class LogSystem : Singleton<LogSystem> {
 
     string _logFilePath;
 
@@ -16,7 +16,7 @@ public class Logger : Singleton<Logger> {
         File.WriteAllText(_logFilePath, $"Log started at: {DateTime.Now}\n\n");
     }
 
-    // Basic logging methods
+    // Basic logging method
     void Log(string message) {
         string timestamp = DateTime.Now.ToString("HH:mm:ss");
         string formattedMessage = $"[{timestamp}] {message}";

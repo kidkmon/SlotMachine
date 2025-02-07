@@ -18,7 +18,7 @@ public class CreditSystem : Singleton<CreditSystem> {
     void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
             AddCredits(_insertedCredits);
-            Logger.Instance.LogCreditInsertion(_insertedCredits);
+            LogSystem.Instance.LogCreditInsertion(_insertedCredits);
         }
     }
 
@@ -38,6 +38,6 @@ public class CreditSystem : Singleton<CreditSystem> {
     public void Cashout()
     {
         SetCredits(0);
-        Logger.Instance.LogCashout(_credits);
+        LogSystem.Instance.LogCashout(_credits);
     } 
 }

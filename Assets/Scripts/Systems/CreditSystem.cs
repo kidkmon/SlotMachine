@@ -4,18 +4,21 @@ using UnityEngine.Events;
 public class CreditSystem : Singleton<CreditSystem> {
     [HideInInspector] public UnityEvent<int> OnCreditUpdated;
 
-    int _credits;
     int _betValue;
+    int _credits;
+    int _insertedCredits;
 
     public void Initialize()
     {
         _betValue = EnvironmentConfigs.Instance.GameConfig.BetValue;
+        _insertedCredits = EnvironmentConfigs.Instance.GameConfig.InsertedCredits;
         SetCredits(EnvironmentConfigs.Instance.GameConfig.InitialCredits);
     }
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            AddCredits(100);
+            AddCredits(_insertedCredits);
+            Logger.Instance.LogCreditInsertion(_insertedCredits);
         }
     }
 
@@ -34,8 +37,7 @@ public class CreditSystem : Singleton<CreditSystem> {
 
     public void Cashout()
     {
-        Debug.Log("Cashout");
-        SetCredits(EnvironmentConfigs.Instance.GameConfig.InitialCredits);
-        //LogSystem.Instance.LogCashout(_credits);
+        SetCredits(0);
+        Logger.Instance.LogCashout(_credits);
     } 
 }

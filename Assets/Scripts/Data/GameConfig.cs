@@ -12,6 +12,7 @@ public class GameConfig : ScriptableObject {
     [Header("Game Settings")]
     [SerializeField] int _betValue = 1;
     [SerializeField] int _initialCredits = 100;
+    [SerializeField] int _insertedCredits = 100;
 
     [Header("Jackpot Settings")]
     [SerializeField] int _jackpotDefaultValue = 300;
@@ -26,6 +27,7 @@ public class GameConfig : ScriptableObject {
     
     public int BetValue => _betValue;
     public int InitialCredits => _initialCredits;
+    public int InsertedCredits => _insertedCredits;
 
     public int JackpotDefaultValue => _jackpotDefaultValue;
     public float JackpotIncrementMultiplier => _jackpotIncrementMultiplier;

@@ -10,15 +10,16 @@ public class GameManager : Singleton<GameManager> {
     public void StartSpin() {
         foreach (var slotMachine in SlotMachineManager.Instance.GetActiveSlotMachines()) {
             if (CreditSystem.Instance.TryDeductBet()) {
+                Logger.Instance.LogSpinStart(EnvironmentConfigs.Instance.GameConfig.BetValue);
+
                 JackpotSystem.Instance.AddToJackpot();
 
                 // Check if a jackpot was triggered
                 if (IsJackpotTriggered()) {
-                    Debug.Log("Jackpot triggered!");
                     int jackpotValue = (int)JackpotSystem.Instance.GetCurrentJackpot();
                     CreditSystem.Instance.AddCredits(jackpotValue);
                     JackpotSystem.Instance.ResetJackpot();
-                    //LogSystem.Instance.LogJackpotWon(jackpotValue);
+                    Logger.Instance.LogJackpotWin(jackpotValue);
                 }
 
                 slotMachine.SpinMachine();

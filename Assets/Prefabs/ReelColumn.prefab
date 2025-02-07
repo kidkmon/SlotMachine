@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _container: {fileID: 3730862788940863827}
   _symbolCardPrefab: {fileID: 4959764299128346210, guid: bbaf9625446500448a782385d1398e70, type: 3}
+  _reelSpin: {fileID: 4147557295241896196}
 --- !u!114 &4147557295241896196
 MonoBehaviour:
   m_ObjectHideFlags: 0

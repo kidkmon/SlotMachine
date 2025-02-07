@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
@@ -28,8 +30,19 @@ public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
         _reelColumnViews.Add(reelColumnView);
     }
 
-    public void SpinMachine() => OnSpinButtonClicked?.Invoke();
+    public void SpinMachine() => StartCoroutine(SpinReels());
 
+    IEnumerator SpinReels()
+    {
+        foreach (var reelColumnView in _reelColumnViews)
+        {
+            reelColumnView.SpinButtonClicked();
+        }
+
+        yield return new WaitUntil(() => _reelColumnViews.TrueForAll(reelColumnView => reelColumnView.ReelSpin.ReelStopped));
+
+        OnSpinButtonClicked?.Invoke();
+    }
     #region UI
 
     void OnEnable() {

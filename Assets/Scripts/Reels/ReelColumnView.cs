@@ -6,11 +6,13 @@ public class ReelColumnView : View<ReelColumnViewController, ReelColumnView>
 {
     [SerializeField] GameObject _container;
     [SerializeField] GameObject _symbolCardPrefab;
+    [SerializeField] ReelSpin _reelSpin;
 
     List<SymbolCardView> _symbolCards = new();
 
     //Getters
     public IReadOnlyList<SymbolCardView> SymbolCards => _symbolCards;
+    public ReelSpin ReelSpin => _reelSpin;
 
     //Events
     public event Func<SymbolAssetConfig> OnGetCenterSymbolConfig;

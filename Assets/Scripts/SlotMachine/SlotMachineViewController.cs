@@ -21,12 +21,6 @@ public class SlotMachineViewController : ViewController<SlotMachineView>
 
     void OnSpinButtonClicked()
     {
-        // Spin all reels
-        foreach (var reelColumnView in View.ReelColumnViews)
-        {
-           reelColumnView.SpinButtonClicked();
-        }
-
         //Check if center symbols are the same
         var (isCenterSymbolsMatch, symbolConfig) = CheckCenterSymbols();
         if(isCenterSymbolsMatch)

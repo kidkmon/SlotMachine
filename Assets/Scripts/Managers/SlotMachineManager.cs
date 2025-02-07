@@ -2,14 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class SlotMachineManager : Singleton<SlotMachineManager>
 {
     [SerializeField] List<GameObject> _slotMachines;
-
-    [HideInInspector] public UnityEvent OnActivateSlotMachine;
-    [HideInInspector] public UnityEvent OnRemoveSlotMachine;
 
     int _slotMachinesMaxInstances;
     
@@ -31,7 +27,6 @@ public class SlotMachineManager : Singleton<SlotMachineManager>
                 break;
             }
         }
-        OnActivateSlotMachine?.Invoke();
     }
 
     void DisableSlotMachine()
@@ -44,7 +39,6 @@ public class SlotMachineManager : Singleton<SlotMachineManager>
                 break;
             }
         }
-        OnRemoveSlotMachine?.Invoke();
     }
 
     int GetActiveSlotMachineInstances() => Math.Min(PlayerPrefs.GetInt("SlotMachineInstances", 1), _slotMachinesMaxInstances); // Ensure max instances

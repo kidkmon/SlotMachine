@@ -1,9 +1,6 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class GameManager : Singleton<GameManager> {
-    public UnityEvent OnSpinStarted;
-    public UnityEvent OnSpinEnded;
 
     void Start() => CreditSystem.Instance.Initialize();
 
@@ -30,6 +27,6 @@ public class GameManager : Singleton<GameManager> {
     }
   
     bool IsJackpotTriggered() {  
-        return Random.Range(0f, 1f) <= EnvironmentConfigs.Instance.GameConfig.JackpotChance;  
+        return Random.Range(0f, 1f) <= EnvironmentConfigs.Instance.GameConfig.JackpotChance;
     }  
 }

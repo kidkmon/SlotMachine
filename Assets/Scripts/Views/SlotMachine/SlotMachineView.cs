@@ -29,6 +29,8 @@ public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
         _reelColumnViews.Add(reelColumnView);
     }
 
+    #region Spin Methods
+
     public void SpinMachine() => StartCoroutine(SpinReels());
 
     IEnumerator SpinReels()
@@ -45,6 +47,8 @@ public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
         _isSpinning = false;
         OnSpinButtonClicked?.Invoke();
     }
+
+    #endregion
 
     #region UI
 

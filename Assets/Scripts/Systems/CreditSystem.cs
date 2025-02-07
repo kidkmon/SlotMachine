@@ -16,28 +16,33 @@ public class CreditSystem : Singleton<CreditSystem> {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space)) { // Simulate coin insertion
             AddCredits(_insertedCredits);
             LogSystem.Instance.LogCreditInsertion(_insertedCredits);
         }
     }
+
+    void SetCredits(int value) {
+        _credits = value;
+        OnCreditUpdated?.Invoke(_credits);
+    }
+
+    #region Public Methods
+
+    public int Credits => _credits;
+    public void AddCredits(int value) => SetCredits(_credits + value);
 
     public bool TryDeductBet() {
         if (_credits <= 0) return false;
         SetCredits(_credits - _betValue);
         return true;
     }
-    void SetCredits(int value) {
-        _credits = value;
-        OnCreditUpdated?.Invoke(_credits);
-    }
-
-    public int Credits => _credits;
-    public void AddCredits(int value) => SetCredits(_credits + value);
 
     public void Cashout()
     {
         SetCredits(0);
         LogSystem.Instance.LogCashout(_credits);
-    } 
+    }
+
+    #endregion
 }

@@ -20,8 +20,7 @@ public class ReelColumnViewController : ViewController<ReelColumnView> {
 
     void UpdateView()
     {
-        int symbolsPerReel = EnvironmentConfigs.Instance.GameConfig.SymbolsPerReel;
-        for (int i = 0; i < symbolsPerReel; i++)
+        for (int i = 0; i < EnvironmentConfigs.Instance.SymbolsAssetCollection.Size; i++)
         {
             var symbolConfig = GenerateRandomSymbol();
             View.AddSymbolCard(symbolConfig);

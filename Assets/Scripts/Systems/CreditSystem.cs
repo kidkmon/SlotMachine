@@ -16,10 +16,17 @@ public class CreditSystem : Singleton<CreditSystem> {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) { // Simulate coin insertion
-            AddCredits(_insertedCredits);
-            LogSystem.Instance.LogCreditInsertion(_insertedCredits);
+        if (Input.GetKeyDown(KeyCode.Space)) // Simulate credit insertion
+        {
+            InsertCredits();
         }
+    }
+
+    void InsertCredits()
+    {
+        AudioManager.Instance.PlayInsertCreditSound();
+        AddCredits(_insertedCredits);
+        LogSystem.Instance.LogCreditInsertion(_insertedCredits);
     }
 
     void SetCredits(int value) {

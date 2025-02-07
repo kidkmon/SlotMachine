@@ -668,8 +668,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 751329951}
-  - component: {fileID: 751329954}
   - component: {fileID: 751329953}
+  - component: {fileID: 751329954}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -716,8 +716,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794581efc557a474a864e17c75becf54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinSound: {fileID: 0}
-  winSound: {fileID: 0}
+  _insertCoinSound: {fileID: 8300000, guid: 1f11d4b6795484048a9d2bcb3d85a65d, type: 3}
+  _spinSound: {fileID: 8300000, guid: f9ce2e111e3b2c14ea79c4387dcc6269, type: 3}
+  _winSound: {fileID: 8300000, guid: a1befbc1312723e468ae563fa9a99e93, type: 3}
+  _jackpotSound: {fileID: 8300000, guid: 34d3a254674d6634aa16a97719462089, type: 3}
 --- !u!1001 &826029764
 PrefabInstance:
   m_ObjectHideFlags: 0

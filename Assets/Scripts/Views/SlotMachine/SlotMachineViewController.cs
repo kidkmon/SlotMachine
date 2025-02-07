@@ -52,6 +52,7 @@ public class SlotMachineViewController : ViewController<SlotMachineView>
 
     void GivePrizeReward(SymbolAssetConfig symbolConfig)
     {
+        AudioManager.Instance.PlayWinSound();
         CreditSystem.Instance.AddCredits(symbolConfig.Payout);
         LogSystem.Instance.LogSpinResult(symbolConfig.Payout);
     }

@@ -38,6 +38,8 @@ public class ReelSpin : MonoBehaviour
 
         for (int i = 0; i < randomValue; i++)
         {
+            AudioManager.Instance.PlaySpinSound();
+
             if (_reelTransform.offsetMax.y >= 231f) // Reset to the top
             {
                 _reelTransform.offsetMax = new Vector2(_reelTransform.offsetMax.x, 0f);
@@ -50,7 +52,7 @@ public class ReelSpin : MonoBehaviour
             }
          
             AdjustTimeInterval(i, randomValue);
-
+            
             yield return new WaitForSeconds(_timeInterval);
         }
 

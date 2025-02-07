@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
@@ -14,15 +13,15 @@ public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
     [Header("UI")]
     [SerializeField] TextMeshProUGUI _jackpotText;
     
+    bool _isSpinning;
     List<ReelColumnView> _reelColumnViews = new();
 
+    //Getters
+    public bool IsSpinning => _isSpinning;
     public IReadOnlyList<ReelColumnView> ReelColumnViews => _reelColumnViews;
-    public event Action OnSpinButtonClicked;
 
-    protected override void Start()
-    {
-        base.Start();
-    }
+    //Events
+    public event Action OnSpinButtonClicked;
 
     public void AddReelColumnView()
     {
@@ -34,6 +33,8 @@ public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
 
     IEnumerator SpinReels()
     {
+        _isSpinning = true;
+
         foreach (var reelColumnView in _reelColumnViews)
         {
             reelColumnView.SpinButtonClicked();
@@ -41,8 +42,10 @@ public class SlotMachineView : View<SlotMachineViewController, SlotMachineView>
 
         yield return new WaitUntil(() => _reelColumnViews.TrueForAll(reelColumnView => reelColumnView.ReelSpin.ReelStopped));
 
+        _isSpinning = false;
         OnSpinButtonClicked?.Invoke();
     }
+
     #region UI
 
     void OnEnable() {

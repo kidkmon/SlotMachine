@@ -9,6 +9,8 @@ public class GameManager : Singleton<GameManager> {
 
     public void StartSpin() {
         foreach (var slotMachine in SlotMachineManager.Instance.GetActiveSlotMachines()) {
+            if (slotMachine.IsSpinning) return; // Prevent multiple spins
+
             if (CreditSystem.Instance.TryDeductBet()) {
                 LogSystem.Instance.LogSpinStart(EnvironmentConfigs.Instance.GameConfig.BetValue);
 
